@@ -1,4 +1,4 @@
-package test;
+package Acoount;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.UnsupportedEncodingException;
@@ -7,7 +7,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.Random;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 interface Sort {

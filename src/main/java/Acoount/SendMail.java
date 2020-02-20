@@ -1,4 +1,4 @@
-package test;
+package Acoount;
 
 
 import java.util.Properties;
@@ -125,7 +125,7 @@ public class SendMail {
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
             // Set Subject: header field
-            message.setSubject("Welcome to CMS!");
+            message.setSubject("Verification!");
 
             // Now set the actual message
             message.setText("This is actual message\n"+

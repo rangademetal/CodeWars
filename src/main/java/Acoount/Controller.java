@@ -1,4 +1,4 @@
-package test;
+package Acoount;
 
 
 import javafx.event.ActionEvent;
@@ -14,7 +14,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 public class Controller {
 
@@ -62,6 +61,7 @@ public class Controller {
     public void hello(ActionEvent env) {
 
         try {
+            String update = "UPDATE root_test SET verified= 'wdQgsjgiB7+0m5aJ1PO0gQ==' WHERE (EMAIL=?)";
             String isValid = "SELECT * FROM root_test where (EMAIL=? and PASSWORD=?)  AND verified = 'wdQgsjgiB7+0m5aJ1PO0gQ=='";
             String isNotValid = "SELECT * FROM root_test where (EMAIL=? and PASSWORD=?)  AND verified = '6+4X1RFml6IirbixxXvn3w=='";
             String sqlText = "SELECT verified FROM root_test where (EMAIL=? and PASSWORD=?)";
@@ -81,7 +81,7 @@ public class Controller {
             if (rs.next())  {
                 if(rs.getString("verified").equals("wdQgsjgiB7+0m5aJ1PO0gQ==")) {
                     System.out.println("Working account");
-                    AnchorPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("CMS.fxml"));
+                    AnchorPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("work.fxml"));
                     rootPanelLogin.getChildren().setAll(pane);
                 }
                 else if(rs.getString("verified").equals("6+4X1RFml6IirbixxXvn3w==")) {
@@ -132,13 +132,13 @@ public class Controller {
             String codeValid = fnc.encrypt(code, secretKey );
             System.out.println(codeValid);
 
-            String sql = "UPDATE root_test set verified='"+verified+"' WHERE email='"+username+"' AND number='"+codeValid+"'";
-            if()
+            String sql = "UPDATE root_test set verified='"+verified+"' WHERE email='"+username+"' AND number='"+code+"'";
+
             System.out.println("Input from your text field "+ code);
             pst = con.prepareStatement(sql);
             pst.executeUpdate();
             con.close();
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("CMS.fxml"));
+            AnchorPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("work.fxml"));
             rootPanelVerification.getChildren().setAll(pane);
         }
 
